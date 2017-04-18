@@ -1,34 +1,36 @@
 package com.example.glisseo.wifind;
 
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ListView lv;
-    private ContentResolver cr;
+    WifiManager wifimanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        update();
+        wifimanager = (WifiManager) getSystemService(WIFI_SERVICE);
+        String[] LIST_MENU = { wifimanager.getConnectionInfo().getSSID(), wifimanager.getConnectionInfo().getMacAddress(),wifimanager.getConnectionInfo().getBSSID()};
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, LIST_MENU);
+        ListView listView = (ListView)findViewById(R.id.listviwe2);
+        listView.setAdapter(adapter);
+
     }
 
-    private void update(){
-        /*
-        lv = (ListView)findViewById(R.id.myList);
-        cr = getContentResolver();
-        Cursor c = cr.query(Uri.parse(URI), null, null, null, null);
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.custum_layout,
-                c, new String[] {"_id","name", "score"}, new int[] {R.id.textView6, R.id.textView9, R.id.textView8});
-        lv.setAdapter(adapter);
-        */
-    }
 }

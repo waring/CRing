@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CRing.iml" filepath="$PROJECT_DIR$/CRing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WiFind.iml" filepath="$PROJECT_DIR$/WiFind.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
